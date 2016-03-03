@@ -14,5 +14,7 @@
     <orderEntry type="library" name="jetty-http-9.3.7.v20160115" level="project" />
     <orderEntry type="library" name="jetty-io-9.3.7.v20160115" level="project" />
     <orderEntry type="library" name="jetty-security-9.3.7.v20160115" level="project" />
+    <orderEntry type="library" name="gson-2.6.2" level="project" />
+    <orderEntry type="library" name="commons-io-2.4" level="project" />
   </component>
 </module>

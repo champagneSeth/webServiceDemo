@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>WOO</title>
+        <style type="text/css">
+            .center {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0px;
+                width: 70%;
+            }
+            h3 {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 0px;
+                width: 70%;
+                font-family: "Lucida Console", Monaco, monospace;
+            }
+        </style>
+    </head>
+    <body style="background-color: honeydew;">
+        <h3 id="video-title">Video Example <button id="do-it">new video</button></h3>
+        <div class="center">
+            <video id="game" height="600" width="800" controls>
+                <source src="videos/cyanide.mp4" type="video/mp4" />
+                You can't play this video
+            </video>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script type="text/javascript">
+            $('#do-it').on('click', function() {
+                var video = document.getElementsByTagName('video')[0];
+                var source = video.getElementsByTagName('source')[0];
+
+                $.ajax({
+                    'url'       : 'php/api.php/getVideo?search=anthony',
+                    'method'    : 'GET',
+                    'dataType'  : 'json'
+                }).done(function(data) {
+                    console.log(data);
+                    source.src = data.src;
+                    $('#video-title').text(data.title);
+                    video.load();
+                })
+            });
+        </script>
+    </body>
+</html>
