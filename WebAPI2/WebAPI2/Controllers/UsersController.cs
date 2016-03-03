@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using WebAPI2.Models;
 
 namespace WebAPI2.Controllers
@@ -18,7 +13,7 @@ namespace WebAPI2.Controllers
                 FirstName = "Seth",
                 LastName = "Champagne",
                 UserName = "champagneSeth",
-                Password = "Password"
+                Password = "prassword"
             };
             return onlyUser;
         }
