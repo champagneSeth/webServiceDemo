@@ -1,9 +1,8 @@
 var express         = require('express')
 ,   app             = express()
-,   path            = require('path')
 ,   bodyParser      = require('body-parser')
 ,   fs              = require('fs')
-,   methodOverride  = require('method-override')
+,   db              = require('./data.js')
 ;
 
 
@@ -18,13 +17,31 @@ app.use(bodyParser.json({
 }));
 
 
-app.get('/api/image', function(req, res) {
-    res.status(200).json({ success : true, description : 'cow', url:''});
+app.get('/api/images', function(req, res) {
+    res.status(200).json({ 
+        images : db.images 
+    });
 });
 
-app.get('/api/actualImage', function(req, res) {
-    res.status(200).sendFile(__dirname + '/picture.jpg');
+app.get('/api/getUser', function(req, res) {
+    res.status(200).json({ 
+        user    : db.user
+    ,   key     : db.secretKey
+    });
 });
+
+app.get('/api/cow', function(req, res) {
+    res.status(200).json({ 
+        success     : true 
+    ,   description : 'cow' 
+    ,   src         : db.cow
+    });
+});
+
+app.get('/api/seeCow', function(req, res) {
+    res.status(200).sendFile(__dirname + db.cow);
+});
+
 
 var server = app.listen(3000, function () {
     var host = server.address().address;
@@ -33,4 +50,5 @@ var server = app.listen(3000, function () {
     console.log('Magic happening on port ' + port);
     
 });
+
 
