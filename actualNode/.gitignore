@@ -1,0 +1,12 @@
+
+#log files
+*.log
+
+#Exclude modules
+node_modules
+
+#exclude Mac file thingy
+.DS_Store
+
+#exclude Resumes folder
+resumes
